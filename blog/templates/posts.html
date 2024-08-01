@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+<!-- Boxicons -->
+<link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+<!-- Glide js -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.core.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.4.1/css/glide.theme.css">
+<!-- Custom StyleSheet -->
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
+{% for product in products %}
+<div class="product-item">
+    <div class="overlay">
+        <a href="" class="product-thumb">
+            <img src="{% static 'images/'|add:product.image %}" alt="" />
+        </a>
+        {% if product.discount %}
+        <span class="discount">{{ product.discount }}</span>
+        {% endif %}
+    </div>
+    <div class="product-info">
+        <span>{{ product.category }}</span>
+        <a href="">{{ product.name }}</a>
+        <h4>${{ product.price }}</h4>
+    </div>
+    <ul class="icons">
+        <li><i class="bx bx-heart"></i></li>
+        <li><i class="bx bx-search"></i></li>
+        <li><i class="bx bx-cart"></i></li>
+    </ul>
+</div>
+{% endfor %}
